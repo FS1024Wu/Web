@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css"> 
+	body{
+		background-image:url("bc.jpg");
+		background-repeat: repeat-x repeat-y;
+	}
+	article{
+		width: 100%;
+		height: 92%;
+
+	}
+	footer{
+		width: 100%;
+		height: 8%;
+		position:absolute;
+		text-align:center;
+		bottom: 10px;
+	}
+	section:after{
+	content:"";
+	display:table;
+	clear:both;
+	}
+		li a {
+		  display:block;
+		  display:inline;
+		  color: black;
+		  text-align: center;
+		  padding: 14px 16px;
+		  background-color:
+		}
+		li a:hover:not(.active) {
+		background-color: #4CAF50;
+		}
+		.ul {
+			list-style-type: none;
+			overflow: hidden;
+		}
+		.li,p{list-style-type:none;
+			display:inline;
+		}
+	#profile:hover, #profile:focus{
+		background: green;  
+		background-image:url("cursor.png");
+	}
+div{
+  width: 64px;height: 64px;background-image:url("p1.png");position: relative;
+  -webkit-animation-name: example;-webkit-animation-duration:7s;                          
+	animation-name: example;animation-duration: 7s; animation-iteration-count: infinite;
+}
+dl{
+  width: 64px;height: 64px;background-image:url("p5.png");position: relative;
+  -webkit-animation-name: example;-webkit-animation-duration:7s;
+	animation-name: example;animation-duration: 7s; animation-iteration-count: infinite;
+}
+dt{
+  width: 64px;height: 64px;background-image:url("p6.png");position: relative;
+  -webkit-animation-name: example;-webkit-animation-duration:7s;
+	animation-name: example;animation-duration: 7s; animation-iteration-count: infinite;
+}
+dd{
+  width: 64px;height:64px;background-image:url("p3.png");position: relative;
+  -webkit-animation-name: example;-webkit-animation-duration:7s;
+	animation-name: example;animation-duration: 7s; animation-iteration-count: infinite;
+}
+    .a {
+        cursor: url("cursor.png"), url("cursor.png"), default;
+    }
+	.div{
+        cursor: url("cursor.png"), url("cursor.png"), default;
+    }
+#div1 {-webkit-animation-timing-function: ease;}
+#div2 {-webkit-animation-timing-function: linear;}
+#div3 {-webkit-animation-timing-function: ease-in;}
+#div4 {-webkit-animation-timing-function: ease-out;}
+#div5{-webkit-animation-timing-function: ease-in-out;}
+
+#div1 {animation-timing-function: ease;}
+#div2 {animation-timing-function: ease-in-out;}
+#div3 {animation-timing-function: ease-out;}
+#div4 {animation-timing-function: linear;}
+#div5 {animation-timing-function:ease-in;}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+		from{left:0%;}
+		to{left:100%;}
+}
+/* Standard syntax */
+@keyframes example {
+		from{left:0%;}
+		to{left:100%;}
+}
+}
+</style>
+</head>
+<body>
+<article>
+	<table onclick="this.style.display='none';">
+		<div id="div1"id="profile"class="a"class="div"tabindex="0" onclick="this.style.display='none';"></div>
+		<dt id="div2"id="profile"class="a"class="div"tabindex="0" onclick="this.style.display='none';"></dt>
+		<dl id="div4"id="profile"class="a"class="div"tabindex="0" onclick="this.style.display='none';"></dl>
+		<dd id="div5"id="profile"class="a"class="div"tabindex="0" onclick="this.style.display='none';"></dd>
+		<div id="div3"id="profile"class="a"class="div"tabindex="0" onclick="this.style.display='none';"></div>
+		<dl id="div1"id="profile"class="a"class="div"tabindex="0" onclick="this.style.display='none';"></dl>
+		<dd id="div4"id="profile"class="a"class="div"tabindex="0" onclick="this.style.display='none';"></dd>
+		<div id="div3"id="profile"class="a"class="div"tabindex="0" onclick="this.style.display='none';"></div>
+		<dt id="div4"id="profile"class="a"class="div"tabindex="0" onclick="this.style.display='none';"></dt>
+	</table>	
+</article>
+<footer>
+<ul class="ul">
+  <li class="li"><a href="main.html"><img src="home.png"></a></li>
+  <li class="li"><a href="start.html" class="active"><img src="start.png"></a></li>
+  <li class="li"><a href="end.html"><img src="stop.png"></a></li>
+</ul>
+</footer>
+<body>
+</html>
