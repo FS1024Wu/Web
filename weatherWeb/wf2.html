@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+
+  head{
+	width:100%;
+	height:15%;
+}// head for search box
+
+ .srchTop a{ float:left;display:block;color:black;text-align:center;padding:8px 12px;text-decoration:none;}//style changing, 
+ .srchTop .srchTopBox{ float:right;
+  }
+ .srchTop {
+  overflow: hidden;
+}
+.srchTop a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.srchTop a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.srchTop a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+.srchTop .srchTopBox {
+  float: right;
+}
+
+.srchTop input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+.srchTop .srchTopBox button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+.srchTop .srchTopBox button:hover {
+  background: #ccc;
+}
+@media screen and (max-width: 600px) {
+  .srchTop .srchTopBox {
+    float: none;
+  }
+  .srchTop a, .srchTop input[type=text], .srchTop .srchTopBox button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .srchTop input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
+
+ </style> 
+   <h1 align="center" colorz="blue">What is the weather like?</h1>
+   <div class = "srchTop">
+   <a href = "wf.html" class="active">Home</a>
+   <a href = "https://phaster.com/zip_code.html" title="How to use and search" target="_blank">About</a>
+   <div class = "srchTopBox">
+     <input id="sc"type="text"placeholder="Search the location..."name="search" title="search by city or zip code,country abbr such as 30071,us">
+     <button type="submit"><img src="sB.png"></button>
+   </div>
+ </div>
+ </head>
+<body background="bc.jpg">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+<script src="http://ajax.microsoft.com/ajax/3.5/MicrosoftAjax.js"type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    $('button').click(function(){
+	var num = /[0-9]*/g;
+	var str = /[a-zA-Z]*/g;
+	var format = /([a-zA-z]*|[0-9]*)\,[A-Za-z]*/;
+	var readIn = $('#sc').val();	
+	var arr = readIn.split(",");
+		if(arr.length > 2){
+			alert("u input wrong");
+		}
+		if(format.test(readIn)){
+			//alert("input correct");	
+		}
+		else
+			alert("wrong");
+		function weather(){
+		//alert(arr[0]);
+		//alert(arr[1]);
+		var zpCode = "http://api.openweathermap.org/data/2.5/forecast?zip=";
+		var cityName = "http://api.openweathermap.org/data/2.5/forecast?q=";
+		var last = "&APPID=4f9f0d5f324074b4dacffc307b05a28e";
+		var url;
+		if(/[0-9]/.test(arr[0])){
+		 url = zpCode+readIn+last;
+		}
+		else if(/[a-zA-Z]/.test(arr[0])){
+		 url = cityName+readIn+last;
+		}
+		else
+			alert("wrong input");
+		//http://api.openweathermap.org/data/2.5/forecast?zip=30071,us&APPID=4f9f0d5f324074b4dacffc307b05a28e
+		//http://api.openweathermap.org/data/2.5/forecast?q=Atlanta,Us&APPID=4f9f0d5f324074b4dacffc307b05a28e
+		//var url = 'http://api.openweathermap.org/data/2.5/weather?q=marietta,us&APPID=4f9f0d5f324074b4dacffc307b05a28e';
+		$.getJSON(url,function (data) {
+		console.log(data);  
+		updateDOM(data);
+		});
+	}
+	weather();
+	function updateDOM(data){
+		var City=data.city.name;
+		var Country=data.city.country;
+			 var Daylike = data.list["0"].weather["0"].description;
+			 var Temp =	parseInt(data.list["0"].main.temp)-273;
+			 var Wind = data.list["0"].wind.speed;
+			 var Max_temp = parseInt(data.list["0"].main.temp_max)-273;
+			 var Min_temp = parseInt(data.list["0"].main.temp_min)-273;
+			 $('#City').html(City);
+			 $('#Country').html(Country);
+			  $('#Daylike').html(Daylike);
+			 $('#Temp').html(Temp);
+			 $('#wind').html(Wind);
+			 $('#Max_temp').html(Max_temp);
+			 $('#Min_temp').html(Min_temp);	
+			if(/ain/.test(Daylike)||(/rizzle/.test(Daylike))){
+				document.body.style.backgroundImage="url('rainyB.jpg')";
+				document.getElementById("i1").src="rainy.png";
+			}
+			else if(/loud/.test(Daylike)){
+				document.body.style.backgroundImage="url('cloudyB.jpg')";
+							document.getElementById("i1").src="cloudy.png";
+			}
+			else if(/lear/.test(Daylike)){
+				document.body.style.backgroundImage="url('sunnyB.png')";
+							document.getElementById("i1").src="sunny.png";
+			}
+			else if((/now/.test(Daylike))||(/leet/.test(Daylike))){
+				document.body.style.backgroundImage="url('snowB.jpg')";
+							document.getElementById("i1").src="snowy.png";
+			}
+		var City=data.city.name;
+		var Country=data.city.country;
+			 var Daylike = data.list["9"].weather["0"].description;
+			 var Temp = Math.round(parseInt(data.list["9"].main.temp))-273;
+			 var Wind = data.list["9"].wind.speed;
+			 var Max_temp = Math.round(parseInt(data.list["9"].main.temp_max))-273;
+			 var Min_temp = Math.round(parseInt(data.list["9"].main.temp_min))-273;
+			 $('#City2').html(City);
+			 $('#Country2').html(Country);
+			  $('#Daylike2').html(Daylike);
+			 $('#Temp2').html(Temp);
+			 $('#wind2').html(Wind);
+			 $('#Max_temp2').html(Max_temp);
+			 $('#Min_temp2').html(Min_temp);
+			if(/ain/.test(Daylike)||(/rizzle/.test(Daylike))){
+			//	document.body.style.backgroundImage="url('rainyB.jpg')";
+				document.getElementById("i2").src="rainy.png";
+			}
+			else if(/loud/.test(Daylike)){
+			//	document.body.style.backgroundImage="url('cloudyB.jpg')";
+							document.getElementById("i2").src="cloudy.png";
+			}
+			else if(/lear/.test(Daylike)){
+			//	document.body.style.backgroundImage="url('sunnyB.png')";
+							document.getElementById("i2").src="sunny.png";
+			}
+			else if((/now/.test(Daylike))||(/leet/.test(Daylike))){
+			//	document.body.style.backgroundImage="url('snowB.jpg')";
+							document.getElementById("i2").src="snowy.png";
+			}
+		var City=data.city.name;
+		var Country=data.city.country;
+			 var Daylike = data.list["18"].weather["0"].description;
+			 var Temp = Math.round(parseInt(data.list["18"].main.temp))-273;
+			 var Wind = data.list["18"].wind.speed;
+			 var Max_temp = Math.round(parseInt(data.list["18"].main.temp_max))-273;
+			 var Min_temp = Math.round(parseInt(data.list["18"].main.temp_min))-273;
+			 $('#City3').html(City);
+			 $('#Country3').html(Country);
+			  $('#Daylike3').html(Daylike);
+			 $('#Temp3').html(Temp);
+			 $('#wind3').html(Wind);
+			 $('#Max_temp3').html(Max_temp);
+			 $('#Min_temp3').html(Min_temp);
+			if(/ain/.test(Daylike)||(/rizzle/.test(Daylike))){
+			//	document.body.style.backgroundImage="url('rainyB.jpg')";
+				document.getElementById("i3").src="rainy.png";
+			}
+			else if(/loud/.test(Daylike)){
+			//	document.body.style.backgroundImage="url('cloudyB.jpg')";
+							document.getElementById("i3").src="cloudy.png";
+			}
+			else if(/lear/.test(Daylike)){
+			//	document.body.style.backgroundImage="url('sunnyB.png')";
+							document.getElementById("i3").src="sunny.png";
+			}
+			else if((/now/.test(Daylike))||(/leet/.test(Daylike))){
+			//	document.body.style.backgroundImage="url('snowB.jpg')";
+							document.getElementById("i3").src="snowy.png";
+			}			 
+		var City=data.city.name;
+		var Country=data.city.country;
+			 var Daylike = data.list["27"].weather["0"].description;
+			 var Temp = Math.round(parseInt(data.list["27"].main.temp))-273;
+			 var Wind = data.list["27"].wind.speed;
+			 var Max_temp = Math.round(parseInt(data.list["27"].main.temp_max))-273;
+			 var Min_temp = Math.round(parseInt(data.list["27"].main.temp_min))-273;
+			 $('#City4').html(City);
+			 $('#Country4').html(Country);
+			  $('#Daylike4').html(Daylike);
+			 $('#Temp4').html(Temp);
+			 $('#wind4').html(Wind);
+			 $('#Max_temp4').html(Max_temp);
+			 $('#Min_temp4').html(Min_temp);
+			if(/ain/.test(Daylike)||(/rizzle/.test(Daylike))){
+			//	document.body.style.backgroundImage="url('rainyB.jpg')";
+				document.getElementById("i4").src="rainy.png";
+			}
+			else if(/loud/.test(Daylike)){
+			//	document.body.style.backgroundImage="url('cloudyB.jpg')";
+							document.getElementById("i4").src="cloudy.png";
+			}
+			else if(/lear/.test(Daylike)){
+			//	document.body.style.backgroundImage="url('sunnyB.png')";
+							document.getElementById("i4").src="sunny.png";
+			}
+			else if((/now/.test(Daylike))||(/leet/.test(Daylike))){
+			//	document.body.style.backgroundImage="url('snowB.jpg')";
+							document.getElementById("i4").src="snowy.png";
+			}
+		var City=data.city.name;
+		var Country=data.city.country;
+			 var Daylike = data.list["36"].weather["0"].description;
+			 var Temp = Math.round(parseInt(data.list["36"].main.temp))-273;
+			 var Wind = data.list["36"].wind.speed;
+			 var Max_temp = Math.round(parseInt(data.list["36"].main.temp_max))-273;
+			 var Min_temp = Math.round(parseInt(data.list["36"].main.temp_min))-273;
+			 $('#City5').html(City);
+			 $('#Country5').html(Country);
+			  $('#Daylike5').html(Daylike);
+			 $('#Temp5').html(Temp);
+			 $('#wind5').html(Wind);
+			 $('#Max_temp5').html(Max_temp);
+			 $('#Min_temp5').html(Min_temp);	
+			if(/ain/.test(Daylike)||(/rizzle/.test(Daylike))){
+			//	document.body.style.backgroundImage="url('rainyB.jpg')";
+				document.getElementById("i5").src="rainy.png";
+			}
+			else if(/loud/.test(Daylike)){
+			//	document.body.style.backgroundImage="url('cloudyB.jpg')";
+							document.getElementById("i5").src="cloudy.png";
+			}
+			else if(/lear/.test(Daylike)){
+			//	document.body.style.backgroundImage="url('sunnyB.png')";
+							document.getElementById("i5").src="sunny.png";
+			}
+			else if((/now/.test(Daylike))||(/leet/.test(Daylike))){
+			//	document.body.style.backgroundImage="url('snowB.jpg')";
+							document.getElementById("i5").src="snowy.png";
+			}			 
+	}
+ });
+});
+</script>
+
+<table align="center" border="1" cellpadding="5" cellspacing="5">
+<tr><td colspan="5"><img src="today.png" width="101"height="33.5"></td></tr>
+<tr>
+<td rowspan = "5">
+<img id="i1" width="32px" height="32px" src="sB.png"></img></br>
+<h3 style="text-align:left;float:left">Daylike:</h3>
+<h3 style="text-align:right;float:right"id="Daylike">Daylike</h3>
+<hr style="clear:both;"/>
+<h3>Location:</h3>
+<h4 style="text-align:left;float:left"id="City">city</h4>
+<h4 style="text-align:right;float:right"id="Country">country</h4>
+<hr style="clear:both;"/>
+<h4>Temp_Celsius&WindSpeed_mph:</h4>
+<h4 style="text-align:left;float:left"id="Temp">temp</h4>
+<h4 style="text-align:right;float:right"id="wind">wind</h4>
+<hr style="clear:both;"/>
+<h5>Max_temp_C'&Mix_temp_C':</h5>
+<h5 style="text-align:left;float:left"id="Max_temp">max_temp</h5>
+<h5 style="text-align:right;float:right"id="Min_temp">min_temp</h5>
+<hr style="clear:both;"/>
+</td>
+</tr>
+<tr>
+<td rowspan = "5">
+<img id="i2" width="32px" height="32px" src="sB.png"></img></br>
+<h3 style="text-align:left;float:left">Daylike:</h3>
+<h3 style="text-align:right;float:right"id="Daylike2">Daylike</h3>
+<hr style="clear:both;"/>
+<h3>Location:</h3>
+<h4 style="text-align:left;float:left"id="City2">city</h4>
+<h4 style="text-align:right;float:right"id="Country2">country</h4>
+<hr style="clear:both;"/>
+<h4>Temp_Celsius&WindSpeed_mph:</h4>
+<h4 style="text-align:left;float:left"id="Temp2">temp</h4>
+<h4 style="text-align:right;float:right"id="wind2">wind</h4>
+<hr style="clear:both;"/>
+<h5>Max_temp_C'&Mix_temp_C':</h5>
+<h5 style="text-align:left;float:left"id="Max_temp2">max_temp</h5>
+<h5 style="text-align:right;float:right"id="Min_temp2">min_temp</h5>
+<hr style="clear:both;"/>
+</td>
+</tr>
+<tr>
+<td rowspan = "5">
+<img id="i3" width="32px" height="32px" src="sB.png"></img></br>
+<h3 style="text-align:left;float:left">Daylike:</h3>
+<h3 style="text-align:right;float:right"id="Daylike3">Daylike</h3>
+<hr style="clear:both;"/>
+<h3>Location:</h3>
+<h4 style="text-align:left;float:left"id="City3">city</h4>
+<h4 style="text-align:right;float:right"id="Country3">country</h4>
+<hr style="clear:both;"/>
+<h4>Temp_Celsius&WindSpeed_mph:</h4>
+<h4 style="text-align:left;float:left"id="Temp3">temp</h4>
+<h4 style="text-align:right;float:right"id="wind3">wind</h4>
+<hr style="clear:both;"/>
+<h5>Max_temp_C'&Mix_temp_C':</h5>
+<h5 style="text-align:left;float:left"id="Max_temp3">max_temp</h5>
+<h5 style="text-align:right;float:right"id="Min_temp3">min_temp</h5>
+<hr style="clear:both;"/>
+</td>
+
+</tr>
+<tr>
+<td rowspan = "5">
+<img id="i4" width="32px" height="32px" src="sB.png"></img></br>
+<h3 style="text-align:left;float:left">Daylike:</h3>
+<h3 style="text-align:right;float:right"id="Daylike4">Daylike</h3>
+<hr style="clear:both;"/>
+<h3>Location:</h3>
+<h4 style="text-align:left;float:left"id="City4">city</h4>
+<h4 style="text-align:right;float:right"id="Country4">country</h4>
+<hr style="clear:both;"/>
+<h4>Temp_Celsius&WindSpeed_mph:</h4>
+<h4 style="text-align:left;float:left"id="Temp4">temp</h4>
+<h4 style="text-align:right;float:right"id="wind4">wind</h4>
+<hr style="clear:both;"/>
+<h5>Max_temp_C'&Mix_temp_C':</h5>
+<h5 style="text-align:left;float:left"id="Max_temp4">max_temp</h5>
+<h5 style="text-align:right;float:right"id="Min_temp4">min_temp</h5>
+<hr style="clear:both;"/>
+</td>
+
+</tr>
+<tr>
+<td rowspan = "5">
+<img id="i5" width="32px" height="32px" src="sB.png"></img></br>
+<h3 style="text-align:left;float:left">Daylike:</h3>
+<h3 style="text-align:right;float:right"id="Daylike5">Daylike</h3>
+<hr style="clear:both;"/>
+<h3>Location:</h3>
+<h4 style="text-align:left;float:left"id="City5">city</h4>
+<h4 style="text-align:right;float:right"id="Country5">country</h4>
+<hr style="clear:both;"/>
+<h4>Temp_Celsius&WindSpeed_mph:</h4>
+<h4 style="text-align:left;float:left"id="Temp5">temp</h4>
+<h4 style="text-align:right;float:right"id="wind5">wind</h4>
+<hr style="clear:both;"/>
+<h5>Max_temp_C'&Mix_temp_C':</h5>
+<h5 style="text-align:left;float:left"id="Max_temp5">max_temp</h5>
+<h5 style="text-align:right;float:right"id="Min_temp5">min_temp</h5>
+<hr style="clear:both;"/>
+</td>
+
+</tr>
+
+<!--<tr>
+<td rowspan = "5"id="i1" width="128" height="128"><img src="cloudy.png"></td>
+<td rowspan = "5"id="i2" width="128" height="128"><img src="rainy.png"></td>
+<td rowspan = "5"id="i3" width="128" height="128"><img src="sunny.png"></td>
+<td rowspan = "5"id="i4" width="128" height="128"><img src="snowy.png"></td>
+</tr>
+?--->
+</table>
+</body>
+</html>
+<!--
+{"coord":{"lon":-84.38,"lat":34.34},"weather":[{"id":501,"main":"Rain","description":"moderate rain","icon":"10d"},{"id":701,"main":"Mist","description":"mist","icon":"50d"}],
+"base":"stations",
+"main":{"temp":284.58,"pressure":1020,"humidity":81,"temp_min":277.59,"temp_max":291.48},"visibility":16093,
+"wind":{"speed":3.1,"deg":90},
+"rain":{"1h":1.57},
+"clouds":{"all":90},
+"dt":1552075511,
+"sys":{"type":1,"id":3667,"message":0.0081,"country":"US","sunrise":1552046195,"sunset":1552088404},"id":4187535,"name":"Marietta","cod":200}
+
+
+
+
+
+-->
