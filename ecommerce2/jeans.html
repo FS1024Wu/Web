@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<title>Jeans</title>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<style>
+body {margin: 0;
+}
+article{
+float:left;
+width:35%;
+}
+aside{
+float:right;
+width:80%;
+}
+section:after{
+content:"";
+display:table;
+clear:both;
+}
+
+
+ul.topnav li {   
+	display: inline-block;
+    list-style-type: none;
+}
+	
+	
+	
+ul.topnav li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+ul.topnav li a:hover{
+ text-decoration:underline;
+ }
+ul.topnav li a.active 
+ul.topnav li.right {float: right;}
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #FFFFFF;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  text-decoration:underline;
+  
+}
+
+.sidebar a:hover{
+ text-decoration:underline;
+ }
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+.imgCustom {
+	width:70%;
+}
+
+</style>
+
+</head>
+<body>
+
+
+
+
+<div style="font-family:Courier">
+<ul class="topnav" style="
+    text-align: center;
+">
+  <li><a href="shop.html">Home</a></li>
+  <li><a href="pay.html">pay</a></li>
+  <li><a href="cart.html">cart</a></li>
+  <li><a href="login.html">login</a></li>
+  <li><a href="signup.html">signup</a></li>
+  <li class="right"><a href="logout.html">logout</a></li>
+</ul>
+<article>
+ <h3 class="logo"><b onclick="window.open('shop.html','_self')">___________P&S </b></h3>
+<div class="sidebar">
+  <a href="shirts.html">Shirts</a>
+  <a href="dresses.html">Dresses</a>
+  <a class="active" href="jeans.html">Jeans</a>
+  <a href="shoes.html">Shoes</a>
+</div>
+</div>
+</article>
+
+
+<div style="font-family:Sitka Heading">
+<aside>
+<table>
+    <tr>
+	<td><img class="imgCustom" src="jean1.1.jpg"	onmouseover="this.src='jean1.2.jpg'"
+	onmouseout="this.src='jean1.1.jpg'"><br>$25.00<br><form action="ts.php" method="post">
+	quantity: <input type="text" name="quantityhat1"><br>
+	add to cart: <input type="submit"></form></td>
+	<td><img class="imgCustom" src="jean2.1.jpg"	onmouseover="this.src='jean2.2.jpg'"
+	onmouseout="this.src='jean2.1.jpg'"><br>$38.00<br><form action="ts.php" method="post">
+	quantity: <input type="text" name="quantityhat2"><br>
+	add to cart: <input type="submit"></form></td>
+	<td><img class="imgCustom" src="jean3.1.jpg"	onmouseover="this.src='jean3.2.jpg'"
+	onmouseout="this.src='jean3.1.jpg'"><br>$25.00<br><form action="ts.php" method="post">
+	quantity: <input type="text" name="quantityhat1"><br>
+	add to cart: <input type="submit"></form></td> <br>	
+	<td><img class="imgCustom" src="jean4.1.jpg"	onmouseover="this.src='jean4.2.jpg'"
+	onmouseout="this.src='jean4.1.jpg'"><br>$30.00<br><form action="ts.php" method="post">
+	quantity: <input type="text" name="quantityhat2"><br>
+	add to cart: <input type="submit"></form></td>
+  </tr>
+  
+  <tr>
+	<td><img class="imgCustom" src="jean5.1.jpg"	onmouseover="this.src='jean5.2.jpg'"
+	onmouseout="this.src='jean5.1.jpg'"><br>$30.00<br><form action="ts.php" method="post">
+	quantity: <input type="text" name="quantityhat1"><br>
+	add to cart: <input type="submit"></form></td>
+	<td><img class="imgCustom" src="jean6.1.jpg"	onmouseover="this.src='jean6.2.jpg'"
+	onmouseout="this.src='jean6.1.jpg'"><br>$25.00<br><form action="ts.php" method="post">
+	quantity: <input type="text" name="quantityhat2"><br>
+	add to cart: <input type="submit"></form></td>
+	<td><img class="imgCustom" src="jean7.1.jpg"	onmouseover="this.src='jean7.2.jpg'"
+	onmouseout="this.src='jean7.1.jpg'"><br>$33.00<br><form action="ts.php" method="post">
+	quantity: <input type="text" name="quantityhat1"><br>
+	add to cart: <input type="submit"></form></td> <br>	
+	<td><img class="imgCustom" src="jean8.1.jpg"	onmouseover="this.src='jean8.2.jpg'"
+	onmouseout="this.src='jean8.1.jpg'"><br>$28.00<br><form action="ts.php" method="post">
+	quantity: <input type="text" name="quantityhat2"><br>
+	add to cart: <input type="submit"></form></td>
+  </tr>
+</table>
+</aside>
+</div>
+
+
+</body>
+</html>

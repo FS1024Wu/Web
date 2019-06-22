@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shirts</title>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<style>
+body {margin: 0;
+}
+article{
+float:left;
+width:35%;
+}
+aside{
+float:right;
+width:80%;
+}
+section:after{
+content:"";
+display:table;
+clear:both;
+}
+
+
+ul.topnav li {   
+	display: inline-block;
+    list-style-type: none;
+}
+	
+	
+	
+ul.topnav li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+ul.topnav li a:hover{
+ text-decoration:underline;
+ }
+ul.topnav li a.active 
+ul.topnav li.right {float: right;}
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #FFFFFF;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  text-decoration:underline;
+  
+}
+
+.sidebar a:hover{
+ text-decoration:underline;
+ }
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+.imgCustom {
+	width:70%;
+}
+
+</style>
+
+</head>
+<body>
+
+
+
+
+<div style="font-family:Courier">
+<ul class="topnav" style="
+    text-align: center;
+">
+  <li><a href="shop.html">Home</a></li>
+  <li><a href="pay.html">pay</a></li>
+  <li><a href="cart.html">cart</a></li>
+  <li><a href="login.html">login</a></li>
+  <li><a href="signup.html">signup</a></li>
+  <li class="right"><a href="logout.html">logout</a></li>
+</ul>
+<article>
+ <h3 class="logo"><b onclick="window.open('shop.html','_self')">___________P&S </b></h3>
+<div class="sidebar">
+  <a class="active" href="shirts.html">Shirts</a>
+  <a href="dresses.html">Dresses</a>
+  <a href="jeans.html">Jeans</a>
+  <a href="shoes.html">Shoes</a>
+</div>
+</div>
+</article>
+
+
+<div style="font-family:Sitka Heading">
+<aside>
+<table>
+    <tr>
+	<td><img class="imgCustom" src="shirt1.1.jpg" onmouseover="this.src='shirt1.2.jpg'"
+	onmouseout="this.src='shirt1.1.jpg'"><br>$18.00<br><form action="hat.php" method="post">
+	quantity: <input type="text" name="quantityhat1">
+	add to cart: <input type="submit"></form></td>
+	<td><img class="imgCustom" src="shirt2.1.jpg"onmouseover="this.src='shirt2.2.jpg'"
+	onmouseout="this.src='shirt2.1.jpg'"><br>$18.00<br><form action="hat.php" method="post">
+	quantity: <input type="text" name="quantityhat2"><br>
+	add to cart: <input type="submit"></form></td>
+	<td><img class="imgCustom" src="shirt3.1.jpg"	onmouseover="this.src='shirt3.2.jpg'"
+	onmouseout="this.src='shirt3.1.jpg'"><br>$25.00<br><form action="hat.php" method="post">
+	quantity: <input type="text" name="quantityhat3"><br>
+	add to cart: <input type="submit"></form></td> <br>	
+	<td><img class="imgCustom" src="shirt4.1.jpg"	onmouseover="this.src='shirt4.2.jpg'"
+	onmouseout="this.src='shirt4.1.jpg'"><br>$20.00<br><form action="hat.php" method="post">
+	quantity: <input type="text" name="quantityhat4"><br>
+	add to cart: <input type="submit"></form></td>
+  </tr>
+  
+  <tr>
+	<td><img class="imgCustom" src="shirt5.1.jpg"	onmouseover="this.src='shirt5.2.jpg'"
+	onmouseout="this.src='shirt5.1.jpg'"><br>$20.00<br><form action="hat.php" method="post">
+	quantity: <input type="text" name="quantityhat5"><br>
+	add to cart: <input type="submit"></form></td>
+	<td><img class="imgCustom" src="shirt6.1.jpg"	onmouseover="this.src='shirt6.2.jpg'"
+	onmouseout="this.src='shirt6.1.jpg'"><br>$15.00<br><form action="hat.php" method="post">
+	quantity: <input type="text" name="quantityhat6"><br>
+	add to cart: <input type="submit"></form></td>
+	<td><img class="imgCustom" src="shirt7.1.jpg"	onmouseover="this.src='shirt7.2.jpg'"
+	onmouseout="this.src='shirt7.1.jpg'"><br>$23.00<br><form action="hat.php" method="post">
+	quantity: <input type="text" name="quantityhat7"><br>
+	add to cart: <input type="submit"></form></td><br>	
+	<td><img class="imgCustom" src="shirt8.1.jpg"	onmouseover="this.src='shirt8.2.jpg'"
+	onmouseout="this.src='shirt8.1.jpg'"><br>$18.00<br><form action="hat.php" method="post">
+	quantity: <input type="text" name="quantityhat8"><br>
+	add to cart: <input type="submit"></form></td>
+  </tr>
+</table>
+</aside>
+</div>
+
+
+</body>
+</html>
